@@ -8,6 +8,7 @@ struct EndSessionView: View {
     // Final amounts keyed by SessionPlayer id for still-active players
     @State private var finalAmounts: [UUID: Double] = [:]
     @State private var isConfirmed = false
+    @State private var showingMismatchAlert = false
 
     private var activePlayers: [SessionPlayer] {
         session.participants
@@ -17,6 +18,21 @@ struct EndSessionView: View {
 
     private var allEntered: Bool {
         activePlayers.allSatisfy { finalAmounts[$0.id] != nil }
+    }
+
+    /// Sum of all reported final chip counts (cashed-out + newly entered)
+    private var reportedTotal: Double {
+        let cashedOutTotal = session.participants
+            .filter { !$0.isActive }
+            .compactMap { $0.finalAmount }
+            .reduce(0, +)
+        let activeTotal = activePlayers
+            .reduce(0) { $0 + (finalAmounts[$1.id] ?? 0) }
+        return cashedOutTotal + activeTotal
+    }
+
+    private var discrepancy: Double {
+        reportedTotal - session.totalPot
     }
 
     var body: some View {
@@ -80,12 +96,54 @@ struct EndSessionView: View {
             }
 
             Section {
+                HStack {
+                    Text("Total reported")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Text(reportedTotal.formatted(.currency(code: "GBP")))
+                        .monospacedDigit()
+                }
+                HStack {
+                    Text("Total pot")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Text(session.totalPot.formatted(.currency(code: "GBP")))
+                        .monospacedDigit()
+                }
+                if abs(discrepancy) > 0.01 {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                        Text("Discrepancy")
+                            .foregroundStyle(.orange)
+                        Spacer()
+                        Text((discrepancy >= 0 ? "+" : "") + discrepancy.formatted(.currency(code: "GBP")))
+                            .fontWeight(.semibold)
+                            .monospacedDigit()
+                            .foregroundStyle(.orange)
+                    }
+                }
+            }
+
+            Section {
                 Button("Calculate Results") {
-                    applyFinalAmounts()
+                    if abs(discrepancy) > 0.01 {
+                        showingMismatchAlert = true
+                    } else {
+                        applyFinalAmounts()
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .disabled(!allEntered && !activePlayers.isEmpty)
             }
+        }
+        .alert("Totals Don't Match", isPresented: $showingMismatchAlert) {
+            Button("Go Back & Fix", role: .cancel) {}
+            Button("Proceed Anyway", role: .destructive) { applyFinalAmounts() }
+        } message: {
+            let diff = abs(discrepancy).formatted(.currency(code: "GBP"))
+            let direction = discrepancy > 0 ? "more than" : "less than"
+            Text("Reported totals are \(diff) \(direction) the pot (£\(session.totalPot.formatted())). Check the chip counts before confirming.")
         }
     }
 

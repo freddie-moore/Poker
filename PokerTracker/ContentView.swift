@@ -7,7 +7,7 @@ struct ContentView: View {
                 HomeView()
             }
             .tabItem {
-                Label("Sessions", systemImage: "suit.club.fill")
+                Label("Sessions", systemImage: "suit.spade.fill")
             }
 
             NavigationStack {
@@ -21,8 +21,10 @@ struct ContentView: View {
                 BalanceSummaryView()
             }
             .tabItem {
-                Label("Balances", systemImage: "dollarsign.circle.fill")
+                Label("Balances", systemImage: "chart.bar.fill")
             }
         }
+        .tint(Theme.gold)
+        .preferredColorScheme(.dark)
     }
 }

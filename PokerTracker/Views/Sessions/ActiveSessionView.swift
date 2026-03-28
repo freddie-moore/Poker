@@ -14,28 +14,30 @@ struct ActiveSessionView: View {
     var body: some View {
         NavigationStack {
             List {
+                // Pot summary card
                 Section {
                     HStack {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 4) {
                             Text("Total Pot")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                             Text(session.totalPot.formatted(.currency(code: "GBP")))
-                                .font(.title2.bold())
+                                .font(.system(size: 32, weight: .bold, design: .rounded))
+                                .foregroundStyle(Theme.gold)
                         }
                         Spacer()
-                        VStack(alignment: .trailing) {
-                            Text("Players")
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text("Active")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                            Text("\(session.activePlayers.count) active")
-                                .font(.title2.bold())
+                            Text("\(session.activePlayers.count)")
+                                .font(.system(size: 32, weight: .bold, design: .rounded))
                         }
                     }
                     .padding(.vertical, 4)
                 }
 
-                Section("Active Players") {
+                Section("At the Table") {
                     let active = session.participants
                         .filter { $0.isActive }
                         .sorted { $0.displayName < $1.displayName }
@@ -63,6 +65,7 @@ struct ActiveSessionView: View {
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
             .navigationTitle("Live Session")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -73,7 +76,8 @@ struct ActiveSessionView: View {
                     Button("End Session") {
                         showingEndSession = true
                     }
-                    .foregroundStyle(.red)
+                    .foregroundStyle(Theme.lose)
+                    .fontWeight(.semibold)
                 }
             }
             .sheet(item: $playerForReBuy) { sp in
@@ -95,46 +99,49 @@ private struct PlayerSessionCard: View {
     let onCashOut: () -> Void
 
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 12) {
             HStack(spacing: 12) {
                 if let player = sessionPlayer.player {
-                    PlayerChip(name: player.name, colorHex: player.colorHex, size: 44)
+                    PlayerChip(name: player.name, colorHex: player.colorHex, size: 48)
                 }
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 3) {
                     Text(sessionPlayer.displayName)
                         .font(.headline)
-                    Text("Total in: \(sessionPlayer.totalBuyIn.formatted(.currency(code: "GBP")))")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    if sessionPlayer.buyIns.count > 1 {
-                        Text("\(sessionPlayer.buyIns.count) buy-ins")
-                            .font(.caption2)
+                    HStack(spacing: 6) {
+                        Text("In: \(sessionPlayer.totalBuyIn.formatted(.currency(code: "GBP")))")
+                            .font(.caption)
                             .foregroundStyle(.secondary)
+                        if sessionPlayer.buyIns.count > 1 {
+                            Text("·")
+                                .foregroundStyle(.secondary)
+                            Text("\(sessionPlayer.buyIns.count) buy-ins")
+                                .font(.caption)
+                                .foregroundStyle(Theme.gold.opacity(0.8))
+                        }
                     }
                 }
                 Spacer()
             }
 
             HStack(spacing: 10) {
-                Button {
-                    onReBuy()
-                } label: {
-                    Label("Re-buy", systemImage: "plus.circle")
+                Button(action: onReBuy) {
+                    Label("Re-buy", systemImage: "plus.circle.fill")
                         .frame(maxWidth: .infinity)
+                        .font(.subheadline.bold())
                 }
                 .buttonStyle(.bordered)
+                .tint(Theme.gold)
 
-                Button {
-                    onCashOut()
-                } label: {
-                    Label("Cash Out", systemImage: "dollarsign.circle")
+                Button(action: onCashOut) {
+                    Label("Cash Out", systemImage: "checkmark.circle.fill")
                         .frame(maxWidth: .infinity)
+                        .font(.subheadline.bold())
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.green)
+                .tint(Theme.win)
             }
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 6)
     }
 }
 
@@ -145,26 +152,24 @@ private struct CashedOutRow: View {
         HStack(spacing: 12) {
             if let player = sessionPlayer.player {
                 PlayerChip(name: player.name, colorHex: player.colorHex, size: 36)
-                    .opacity(0.6)
+                    .opacity(0.5)
             }
             VStack(alignment: .leading, spacing: 2) {
                 Text(sessionPlayer.displayName)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                Text("Bought in: \(sessionPlayer.totalBuyIn.formatted(.currency(code: "GBP")))")
+                Text("In: \(sessionPlayer.totalBuyIn.formatted(.currency(code: "GBP")))")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            if let final = sessionPlayer.finalAmount {
+            if let final = sessionPlayer.finalAmount, let net = sessionPlayer.netResult {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(final.formatted(.currency(code: "GBP")))
                         .font(.subheadline.monospacedDigit())
-                    if let net = sessionPlayer.netResult {
-                        Text(net >= 0 ? "+\(net.formatted(.currency(code: "GBP")))" : net.formatted(.currency(code: "GBP")))
-                            .font(.caption.monospacedDigit())
-                            .foregroundStyle(net >= 0 ? .green : .red)
-                    }
+                    Text(net >= 0 ? "+\(net.formatted(.currency(code: "GBP")))" : net.formatted(.currency(code: "GBP")))
+                        .font(.caption.monospacedDigit().bold())
+                        .foregroundStyle(net >= 0 ? Theme.win : Theme.lose)
                 }
             }
         }

@@ -13,48 +13,61 @@ struct SettlementView: View {
 
     var body: some View {
         List {
-            Section("Session Results") {
+            // Winner / loser podium
+            Section("Results") {
                 ForEach(
                     session.participants.sorted { ($0.netResult ?? 0) > ($1.netResult ?? 0) }
                 ) { sp in
                     HStack(spacing: 12) {
                         if let player = sp.player {
-                            PlayerChip(name: player.name, colorHex: player.colorHex, size: 36)
+                            PlayerChip(name: player.name, colorHex: player.colorHex, size: 40)
                         }
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(sp.displayName).font(.subheadline)
-                            Text("Bought in: \(sp.totalBuyIn.formatted(.currency(code: "GBP")))")
+                            Text(sp.displayName).font(.subheadline.bold())
+                            Text("Bought in \(sp.totalBuyIn.formatted(.currency(code: "GBP")))")
                                 .font(.caption).foregroundStyle(.secondary)
                         }
                         Spacer()
                         if let net = sp.netResult {
-                            Text(net >= 0 ? "+\(net.formatted(.currency(code: "GBP")))" : net.formatted(.currency(code: "GBP")))
-                                .fontWeight(.semibold)
-                                .monospacedDigit()
-                                .foregroundStyle(net >= 0 ? .green : .red)
+                            VStack(alignment: .trailing, spacing: 2) {
+                                Text(sp.finalAmount?.formatted(.currency(code: "GBP")) ?? "—")
+                                    .font(.subheadline.monospacedDigit())
+                                Text(net >= 0 ? "+\(net.formatted(.currency(code: "GBP")))" : net.formatted(.currency(code: "GBP")))
+                                    .font(.caption.bold().monospacedDigit())
+                                    .foregroundStyle(net >= 0 ? Theme.win : Theme.lose)
+                            }
                         }
                     }
+                    .padding(.vertical, 2)
                 }
             }
 
             Section {
                 if transfers.isEmpty {
-                    Text("All square — no transfers needed!")
-                        .foregroundStyle(.secondary)
+                    HStack {
+                        Image(systemName: "checkmark.seal.fill")
+                            .foregroundStyle(Theme.win)
+                        Text("All square — no transfers needed!")
+                    }
                 } else {
                     ForEach(Array(transfers.enumerated()), id: \.offset) { _, transfer in
                         TransferRow(transfer: transfer)
                     }
                 }
             } header: {
-                Text("Settle Up")
+                HStack {
+                    Image(systemName: "arrow.left.arrow.right.circle.fill")
+                        .foregroundStyle(Theme.gold)
+                    Text("Settle Up")
+                }
             } footer: {
-                Text("These are the minimum transfers needed to settle this session.")
+                Text("Minimum transfers to settle this session.")
                     .font(.caption)
             }
         }
+        .scrollContentBackground(.hidden)
         .navigationTitle("Results")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -62,24 +75,34 @@ struct TransferRow: View {
     let transfer: Transfer
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 12) {
             PlayerChip(name: transfer.from.name, colorHex: transfer.from.colorHex, size: 36)
+
             VStack(alignment: .leading, spacing: 2) {
-                HStack(spacing: 4) {
-                    Text(transfer.from.name).fontWeight(.medium)
+                HStack(spacing: 6) {
+                    Text(transfer.from.name)
+                        .fontWeight(.semibold)
                     Image(systemName: "arrow.right")
-                        .foregroundStyle(.secondary)
                         .font(.caption)
-                    Text(transfer.to.name).fontWeight(.medium)
+                        .foregroundStyle(Theme.gold)
+                    Text(transfer.to.name)
+                        .fontWeight(.semibold)
                 }
                 .font(.subheadline)
+                Text("bank transfer")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
             }
+
             Spacer()
+
             Text(transfer.amount.formatted(.currency(code: "GBP")))
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .monospacedDigit()
-                .foregroundStyle(.blue)
+                .foregroundStyle(Theme.gold)
+
             PlayerChip(name: transfer.to.name, colorHex: transfer.to.colorHex, size: 36)
         }
+        .padding(.vertical, 2)
     }
 }

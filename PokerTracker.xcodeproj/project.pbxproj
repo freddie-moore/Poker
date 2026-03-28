@@ -10,6 +10,7 @@
 		01C84A51AF514283BFA421F8 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE287863F019DC4BFFE7FF7B /* EndSessionView.swift */; };
 		0C8AC576557C78A5FA48434B /* PlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80454BAC16849DB9881803A /* PlayerFormView.swift */; };
 		239853913481A6A6C99CE37A /* ReBuySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3B1EEC5AE82B93E9F80D7 /* ReBuySheet.swift */; };
+		23BD01EEC755BC22507B5EEF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62882503AC95783D5C34A949 /* Theme.swift */; };
 		2456094AED9F873D3E3D6A06 /* SettlementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942006FAB669326E21D9AB4 /* SettlementView.swift */; };
 		4A92685CB5FB07BFF04FA04B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239C069D4592B650199089D /* HomeView.swift */; };
 		4B581B2288A4E49668F4C752 /* SessionSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48C55805D9130D2B13DD6 /* SessionSetupView.swift */; };
@@ -34,6 +35,7 @@
 		166671E78707C3A41D8EFB3C /* PokerTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerTrackerApp.swift; sourceTree = "<group>"; };
 		35DEE0BCCDCD0696AB7C3843 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4CA3B1EEC5AE82B93E9F80D7 /* ReBuySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReBuySheet.swift; sourceTree = "<group>"; };
+		62882503AC95783D5C34A949 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementCalculator.swift; sourceTree = "<group>"; };
 		7386B7910DF80C73535AED47 /* BalanceSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSummaryView.swift; sourceTree = "<group>"; };
 		7C2E26F61EE02801CBD3E8B2 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				9ADB5666E78FF38C1576DF51 /* CurrencyField.swift */,
 				D8EDA61B467BB66F0F93E4DB /* PlayerChip.swift */,
+				62882503AC95783D5C34A949 /* Theme.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				4B581B2288A4E49668F4C752 /* SessionSetupView.swift in Sources */,
 				DC90412D88E60B506A77FB2C /* SettlementCalculator.swift in Sources */,
 				2456094AED9F873D3E3D6A06 /* SettlementView.swift in Sources */,
+				23BD01EEC755BC22507B5EEF /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

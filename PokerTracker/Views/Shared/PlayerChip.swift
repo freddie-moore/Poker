@@ -10,8 +10,13 @@ struct PlayerChip: View {
             Circle()
                 .fill(Color(hex: colorHex))
                 .frame(width: size, height: size)
+                .overlay(
+                    Circle()
+                        .strokeBorder(Color.white.opacity(0.25), lineWidth: max(1, size * 0.04))
+                )
+                .shadow(color: Color(hex: colorHex).opacity(0.5), radius: size * 0.15)
             Text(initials)
-                .font(.system(size: size * 0.35, weight: .bold))
+                .font(.system(size: size * 0.35, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
         }
     }
@@ -44,14 +49,3 @@ extension Color {
         return String(format: "%02X%02X%02X", r, g, b)
     }
 }
-
-let playerColors: [String] = [
-    "E74C3C", // red
-    "3498DB", // blue
-    "2ECC71", // green
-    "F39C12", // orange
-    "9B59B6", // purple
-    "1ABC9C", // teal
-    "E91E63", // pink
-    "FF5722", // deep orange
-]

@@ -11,11 +11,17 @@ struct PlayerListView: View {
     var body: some View {
         Group {
             if players.isEmpty {
-                ContentUnavailableView(
-                    "No Players",
-                    systemImage: "person.badge.plus",
-                    description: Text("Add players to get started")
-                )
+                VStack(spacing: 16) {
+                    Image(systemName: "person.badge.plus")
+                        .font(.system(size: 60))
+                        .foregroundStyle(Theme.gold.opacity(0.4))
+                    Text("No Players")
+                        .font(.title3.bold())
+                    Text("Add players to get started")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 List {
                     ForEach(players) { player in
@@ -28,6 +34,7 @@ struct PlayerListView: View {
                     }
                     .onDelete(perform: deletePlayers)
                 }
+                .scrollContentBackground(.hidden)
             }
         }
         .navigationTitle("Players")
@@ -71,7 +78,7 @@ private struct PlayerRow: View {
             Spacer()
             Text(player.lifetimeNet, format: .currency(code: "GBP"))
                 .font(.subheadline.monospacedDigit())
-                .foregroundStyle(player.lifetimeNet >= 0 ? .green : .red)
+                .foregroundStyle(player.lifetimeNet >= 0 ? Theme.win : Theme.lose)
         }
         .padding(.vertical, 4)
     }
