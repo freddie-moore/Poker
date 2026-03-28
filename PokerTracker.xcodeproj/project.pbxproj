@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01C84A51AF514283BFA421F8 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE287863F019DC4BFFE7FF7B /* EndSessionView.swift */; };
+		0C8AC576557C78A5FA48434B /* PlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80454BAC16849DB9881803A /* PlayerFormView.swift */; };
+		239853913481A6A6C99CE37A /* ReBuySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3B1EEC5AE82B93E9F80D7 /* ReBuySheet.swift */; };
+		2456094AED9F873D3E3D6A06 /* SettlementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942006FAB669326E21D9AB4 /* SettlementView.swift */; };
+		4A92685CB5FB07BFF04FA04B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0239C069D4592B650199089D /* HomeView.swift */; };
+		4B581B2288A4E49668F4C752 /* SessionSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48C55805D9130D2B13DD6 /* SessionSetupView.swift */; };
+		5AF57DD3DEE23509D963E949 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2E26F61EE02801CBD3E8B2 /* PlayerDetailView.swift */; };
+		5F05E2A7D0B5ACB6CC9FC46B /* SessionPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C499EE2AEA2EFE724E46B /* SessionPlayer.swift */; };
+		6307C8D7E438CB63292AAE12 /* BalanceSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B7910DF80C73535AED47 /* BalanceSummaryView.swift */; };
+		7BE895C5DF03C6C59EE258D2 /* CashOutSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91A85A675F107C030348B3 /* CashOutSheet.swift */; };
+		81390084C33E82949F0F05AA /* BuyIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E760E868C6020A5F93E78C4 /* BuyIn.swift */; };
+		950518F2D4229911E538624F /* CurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB5666E78FF38C1576DF51 /* CurrencyField.swift */; };
+		9B123FA00556FE2108809F49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C65A18293A00F4B35202F /* ContentView.swift */; };
+		BC741EFF5E7EC2CD864D4713 /* PokerTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166671E78707C3A41D8EFB3C /* PokerTrackerApp.swift */; };
+		C76F4C83F4B2CB011B229929 /* PlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97702DF0CEF7BF83FC1FCD61 /* PlayerListView.swift */; };
+		CED8F260BD3F480F9D8D4160 /* PlayerChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EDA61B467BB66F0F93E4DB /* PlayerChip.swift */; };
+		DC90412D88E60B506A77FB2C /* SettlementCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */; };
+		EC4AC45C9EB862A36614EE1D /* ActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */; };
+		EED09C53379551625A604501 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9667751312666B96E362010 /* GameSession.swift */; };
+		F9D77C8E34602273A3BDDB7E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DEE0BCCDCD0696AB7C3843 /* Player.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0239C069D4592B650199089D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		166671E78707C3A41D8EFB3C /* PokerTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerTrackerApp.swift; sourceTree = "<group>"; };
+		35DEE0BCCDCD0696AB7C3843 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4CA3B1EEC5AE82B93E9F80D7 /* ReBuySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReBuySheet.swift; sourceTree = "<group>"; };
+		6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementCalculator.swift; sourceTree = "<group>"; };
+		7386B7910DF80C73535AED47 /* BalanceSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSummaryView.swift; sourceTree = "<group>"; };
+		7C2E26F61EE02801CBD3E8B2 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
+		8CDFEA8A04B184BE74F7EBAD /* PokerTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PokerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E760E868C6020A5F93E78C4 /* BuyIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyIn.swift; sourceTree = "<group>"; };
+		97702DF0CEF7BF83FC1FCD61 /* PlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListView.swift; sourceTree = "<group>"; };
+		9ADB5666E78FF38C1576DF51 /* CurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyField.swift; sourceTree = "<group>"; };
+		A942006FAB669326E21D9AB4 /* SettlementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementView.swift; sourceTree = "<group>"; };
+		AA91A85A675F107C030348B3 /* CashOutSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutSheet.swift; sourceTree = "<group>"; };
+		B37C65A18293A00F4B35202F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BE287863F019DC4BFFE7FF7B /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
+		D80454BAC16849DB9881803A /* PlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFormView.swift; sourceTree = "<group>"; };
+		D8EDA61B467BB66F0F93E4DB /* PlayerChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChip.swift; sourceTree = "<group>"; };
+		E50C499EE2AEA2EFE724E46B /* SessionPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPlayer.swift; sourceTree = "<group>"; };
+		E5D48C55805D9130D2B13DD6 /* SessionSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupView.swift; sourceTree = "<group>"; };
+		E9667751312666B96E362010 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		F3BF048A98696C629BDFDED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		24121DA6CBC3120A0CD95FC9 /* PokerTracker */ = {
+			isa = PBXGroup;
+			children = (
+				B37C65A18293A00F4B35202F /* ContentView.swift */,
+				F3BF048A98696C629BDFDED3 /* Info.plist */,
+				166671E78707C3A41D8EFB3C /* PokerTrackerApp.swift */,
+				661784CF3E7FF6791A58B425 /* Models */,
+				76808040FBE35A7AE3273F58 /* Services */,
+				3AE87F7D0BA4205F96D262A7 /* Views */,
+			);
+			path = PokerTracker;
+			sourceTree = "<group>";
+		};
+		3AE87F7D0BA4205F96D262A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6BD6D53DB8C347AA596F548C /* Balances */,
+				6B95F8DCBD0206F35B38EAE7 /* Players */,
+				EB4AAE41FD4947EA956F7935 /* Sessions */,
+				B3F8849CC934DBC59249D2AA /* Shared */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		661784CF3E7FF6791A58B425 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E760E868C6020A5F93E78C4 /* BuyIn.swift */,
+				E9667751312666B96E362010 /* GameSession.swift */,
+				35DEE0BCCDCD0696AB7C3843 /* Player.swift */,
+				E50C499EE2AEA2EFE724E46B /* SessionPlayer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B95F8DCBD0206F35B38EAE7 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				7C2E26F61EE02801CBD3E8B2 /* PlayerDetailView.swift */,
+				D80454BAC16849DB9881803A /* PlayerFormView.swift */,
+				97702DF0CEF7BF83FC1FCD61 /* PlayerListView.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		6BD6D53DB8C347AA596F548C /* Balances */ = {
+			isa = PBXGroup;
+			children = (
+				7386B7910DF80C73535AED47 /* BalanceSummaryView.swift */,
+			);
+			path = Balances;
+			sourceTree = "<group>";
+		};
+		76808040FBE35A7AE3273F58 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B3F8849CC934DBC59249D2AA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB5666E78FF38C1576DF51 /* CurrencyField.swift */,
+				D8EDA61B467BB66F0F93E4DB /* PlayerChip.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EB4AAE41FD4947EA956F7935 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */,
+				AA91A85A675F107C030348B3 /* CashOutSheet.swift */,
+				BE287863F019DC4BFFE7FF7B /* EndSessionView.swift */,
+				0239C069D4592B650199089D /* HomeView.swift */,
+				4CA3B1EEC5AE82B93E9F80D7 /* ReBuySheet.swift */,
+				E5D48C55805D9130D2B13DD6 /* SessionSetupView.swift */,
+				A942006FAB669326E21D9AB4 /* SettlementView.swift */,
+			);
+			path = Sessions;
+			sourceTree = "<group>";
+		};
+		F22FFA11595433DB384ABC94 = {
+			isa = PBXGroup;
+			children = (
+				24121DA6CBC3120A0CD95FC9 /* PokerTracker */,
+				F9ACFFFBD1E95BEC3D41EC5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9ACFFFBD1E95BEC3D41EC5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CDFEA8A04B184BE74F7EBAD /* PokerTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5AD0B5DCCF08EC1A5B68020 /* PokerTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00D23D52935C15A5CFFFF888 /* Build configuration list for PBXNativeTarget "PokerTracker" */;
+			buildPhases = (
+				45CBCF8C80DAD3258AA5CE1C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PokerTracker;
+			packageProductDependencies = (
+			);
+			productName = PokerTracker;
+			productReference = 8CDFEA8A04B184BE74F7EBAD /* PokerTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8A70DA28C49D801B27D397A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					B5AD0B5DCCF08EC1A5B68020 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = F8A736447605951241269528 /* Build configuration list for PBXProject "PokerTracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F22FFA11595433DB384ABC94;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F9ACFFFBD1E95BEC3D41EC5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5AD0B5DCCF08EC1A5B68020 /* PokerTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45CBCF8C80DAD3258AA5CE1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC4AC45C9EB862A36614EE1D /* ActiveSessionView.swift in Sources */,
+				6307C8D7E438CB63292AAE12 /* BalanceSummaryView.swift in Sources */,
+				81390084C33E82949F0F05AA /* BuyIn.swift in Sources */,
+				7BE895C5DF03C6C59EE258D2 /* CashOutSheet.swift in Sources */,
+				9B123FA00556FE2108809F49 /* ContentView.swift in Sources */,
+				950518F2D4229911E538624F /* CurrencyField.swift in Sources */,
+				01C84A51AF514283BFA421F8 /* EndSessionView.swift in Sources */,
+				EED09C53379551625A604501 /* GameSession.swift in Sources */,
+				4A92685CB5FB07BFF04FA04B /* HomeView.swift in Sources */,
+				F9D77C8E34602273A3BDDB7E /* Player.swift in Sources */,
+				CED8F260BD3F480F9D8D4160 /* PlayerChip.swift in Sources */,
+				5AF57DD3DEE23509D963E949 /* PlayerDetailView.swift in Sources */,
+				0C8AC576557C78A5FA48434B /* PlayerFormView.swift in Sources */,
+				C76F4C83F4B2CB011B229929 /* PlayerListView.swift in Sources */,
+				BC741EFF5E7EC2CD864D4713 /* PokerTrackerApp.swift in Sources */,
+				239853913481A6A6C99CE37A /* ReBuySheet.swift in Sources */,
+				5F05E2A7D0B5ACB6CC9FC46B /* SessionPlayer.swift in Sources */,
+				4B581B2288A4E49668F4C752 /* SessionSetupView.swift in Sources */,
+				DC90412D88E60B506A77FB2C /* SettlementCalculator.swift in Sources */,
+				2456094AED9F873D3E3D6A06 /* SettlementView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1348978F2B67A7BC8D3EE8A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		53AE952612E2EC51FC2D13B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55C5C70FE5E15BC1E77BBD9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokerTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poker.PokerTracker;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8FEFDA91C089448E79CDF71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokerTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poker.PokerTracker;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00D23D52935C15A5CFFFF888 /* Build configuration list for PBXNativeTarget "PokerTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55C5C70FE5E15BC1E77BBD9A /* Debug */,
+				E8FEFDA91C089448E79CDF71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F8A736447605951241269528 /* Build configuration list for PBXProject "PokerTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53AE952612E2EC51FC2D13B6 /* Debug */,
+				1348978F2B67A7BC8D3EE8A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E8A70DA28C49D801B27D397A /* Project object */;
+}
