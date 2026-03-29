@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct EndSessionView: View {
-    @Environment(\.dismiss) private var dismiss
-
     let session: GameSession
+    let onSessionComplete: () -> Void
 
-    // Final amounts keyed by SessionPlayer id for still-active players
     @State private var finalAmounts: [UUID: Double] = [:]
-    @State private var isConfirmed = false
+    @State private var showingSettlement = false
     @State private var showingMismatchAlert = false
 
     private var activePlayers: [SessionPlayer] {
@@ -16,18 +14,17 @@ struct EndSessionView: View {
             .sorted { $0.displayName < $1.displayName }
     }
 
+    // All fields are always "entered" once pre-populated; 0 is a valid value
     private var allEntered: Bool {
         activePlayers.allSatisfy { finalAmounts[$0.id] != nil }
     }
 
-    /// Sum of all reported final chip counts (cashed-out + newly entered)
     private var reportedTotal: Double {
         let cashedOutTotal = session.participants
             .filter { !$0.isActive }
             .compactMap { $0.finalAmount }
             .reduce(0, +)
-        let activeTotal = activePlayers
-            .reduce(0) { $0 + (finalAmounts[$1.id] ?? 0) }
+        let activeTotal = activePlayers.reduce(0) { $0 + (finalAmounts[$1.id] ?? 0) }
         return cashedOutTotal + activeTotal
     }
 
@@ -36,20 +33,22 @@ struct EndSessionView: View {
     }
 
     var body: some View {
-        Group {
-            if isConfirmed {
-                SettlementView(session: session)
-            } else {
-                inputView
+        inputView
+            .navigationTitle("End Session")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(isPresented: $showingSettlement) {
+                SettlementView(session: session, onDone: onSessionComplete)
             }
-        }
-        .navigationTitle("End Session")
-        .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                // Pre-populate with 0 so 0 is treated as a valid entered value
+                for sp in activePlayers where finalAmounts[sp.id] == nil {
+                    finalAmounts[sp.id] = 0
+                }
+            }
     }
 
     private var inputView: some View {
         Form {
-            // Already cashed-out players shown for reference
             let cashedOut = session.participants.filter { !$0.isActive }
             if !cashedOut.isEmpty {
                 Section("Already Cashed Out") {
@@ -62,7 +61,7 @@ struct EndSessionView: View {
                             Spacer()
                             if let net = sp.netResult {
                                 Text(net >= 0 ? "+\(net.formatted(.currency(code: "GBP")))" : net.formatted(.currency(code: "GBP")))
-                                    .foregroundStyle(net >= 0 ? .green : .red)
+                                    .foregroundStyle(net >= 0 ? Theme.win : Theme.lose)
                                     .font(.subheadline.monospacedDigit())
                             }
                         }
@@ -153,6 +152,6 @@ struct EndSessionView: View {
             sp.cashedOutAt = Date()
         }
         session.status = .completed
-        isConfirmed = true
+        showingSettlement = true
     }
 }

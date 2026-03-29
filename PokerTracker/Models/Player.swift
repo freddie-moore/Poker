@@ -65,4 +65,36 @@ final class Player: Hashable {
         let total = completed.reduce(0.0) { $0 + $1.totalBuyIn }
         return total / Double(completed.count)
     }
+
+    /// Sessions sorted oldest → newest
+    private var completedByDate: [SessionPlayer] {
+        sessionPlayers
+            .filter { $0.session?.status == .completed }
+            .sorted { ($0.session?.date ?? .distantPast) < ($1.session?.date ?? .distantPast) }
+    }
+
+    /// Current active win streak (consecutive wins from most recent session backwards)
+    var currentWinStreak: Int {
+        var streak = 0
+        for sp in completedByDate.reversed() {
+            guard let net = sp.netResult else { break }
+            if net > 0 { streak += 1 } else { break }
+        }
+        return streak
+    }
+
+    /// Best win streak across all sessions
+    var bestWinStreak: Int {
+        var best = 0
+        var current = 0
+        for sp in completedByDate {
+            if (sp.netResult ?? 0) > 0 {
+                current += 1
+                best = max(best, current)
+            } else {
+                current = 0
+            }
+        }
+        return best
+    }
 }

@@ -34,6 +34,12 @@ struct PlayerDetailView: View {
                     StatRow(label: "Biggest Win", value: player.biggestWin.formatted(.currency(code: "GBP")), valueColor: .green)
                     StatRow(label: "Biggest Loss", value: player.biggestLoss.formatted(.currency(code: "GBP")), valueColor: .red)
                     StatRow(label: "Avg Buy-in", value: player.avgBuyIn.formatted(.currency(code: "GBP")))
+                    StatRow(
+                        label: "Current Streak",
+                        value: player.currentWinStreak > 0 ? "🔥 \(player.currentWinStreak)" : "\(player.currentWinStreak)",
+                        valueColor: player.currentWinStreak > 0 ? Theme.win : .secondary
+                    )
+                    StatRow(label: "Best Streak", value: "\(player.bestWinStreak) wins")
                 }
 
                 Section("Session History") {

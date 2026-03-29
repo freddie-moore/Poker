@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettlementView: View {
     let session: GameSession
+    var onDone: (() -> Void)? = nil
 
     private var balances: [Player: Double] {
         SettlementCalculator.sessionBalances(session: session)
@@ -68,6 +69,15 @@ struct SettlementView: View {
         .scrollContentBackground(.hidden)
         .navigationTitle("Results")
         .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden(onDone != nil)
+        .toolbar {
+            if let onDone {
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Done") { onDone() }
+                        .fontWeight(.semibold)
+                }
+            }
+        }
     }
 }
 

@@ -87,7 +87,7 @@ struct ActiveSessionView: View {
                 CashOutSheet(sessionPlayer: sp)
             }
             .navigationDestination(isPresented: $showingEndSession) {
-                EndSessionView(session: session)
+                EndSessionView(session: session, onSessionComplete: { dismiss() })
             }
         }
     }
