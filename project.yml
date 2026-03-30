@@ -17,7 +17,7 @@ targets:
         SWIFT_VERSION: 5.9
         TARGETED_DEVICE_FAMILY: "1"
         DEVELOPMENT_TEAM: ""
-        PRODUCT_BUNDLE_IDENTIFIER: com.poker.PokerTracker
+        PRODUCT_BUNDLE_IDENTIFIER: com.fred.poker
         INFOPLIST_FILE: PokerTracker/Info.plist
         GENERATE_INFOPLIST_FILE: YES
         CURRENT_PROJECT_VERSION: 1
