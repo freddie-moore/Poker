@@ -7,6 +7,6 @@ struct PokerTrackerApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [Player.self, GameSession.self, SessionPlayer.self, BuyIn.self])
+        .modelContainer(for: [Player.self, PlayerGroup.self, GameSession.self, SessionPlayer.self, BuyIn.self])
     }
 }

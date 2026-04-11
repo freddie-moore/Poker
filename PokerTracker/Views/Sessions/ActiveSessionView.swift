@@ -10,6 +10,7 @@ struct ActiveSessionView: View {
     @State private var playerForReBuy: SessionPlayer?
     @State private var playerForCashOut: SessionPlayer?
     @State private var showingEndSession = false
+    @State private var showingAddPlayers = false
 
     var body: some View {
         NavigationStack {
@@ -79,6 +80,13 @@ struct ActiveSessionView: View {
                     .foregroundStyle(Theme.lose)
                     .fontWeight(.semibold)
                 }
+                ToolbarItem(placement: .secondaryAction) {
+                    Button {
+                        showingAddPlayers = true
+                    } label: {
+                        Label("Add Players", systemImage: "person.badge.plus")
+                    }
+                }
             }
             .sheet(item: $playerForReBuy) { sp in
                 ReBuySheet(sessionPlayer: sp)
@@ -88,6 +96,9 @@ struct ActiveSessionView: View {
             }
             .navigationDestination(isPresented: $showingEndSession) {
                 EndSessionView(session: session, onSessionComplete: { dismiss() })
+            }
+            .sheet(isPresented: $showingAddPlayers) {
+                AddPlayersToSessionSheet(session: session)
             }
         }
     }

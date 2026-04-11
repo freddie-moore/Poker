@@ -11,6 +11,8 @@ final class Player: Hashable {
     var createdAt: Date
     @Relationship(deleteRule: .cascade, inverse: \SessionPlayer.player)
     var sessionPlayers: [SessionPlayer]
+    @Relationship(inverse: \PlayerGroup.players)
+    var groups: [PlayerGroup]
 
     init(name: String, colorHex: String) {
         self.id = UUID()
@@ -18,6 +20,7 @@ final class Player: Hashable {
         self.colorHex = colorHex
         self.createdAt = Date()
         self.sessionPlayers = []
+        self.groups = []
     }
 
     /// Net profit/loss across all completed sessions

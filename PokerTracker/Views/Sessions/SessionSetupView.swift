@@ -6,6 +6,7 @@ struct SessionSetupView: View {
     @Environment(\.dismiss) private var dismiss
 
     @Query(sort: \Player.name) private var players: [Player]
+    @Query(sort: \PlayerGroup.name) private var groups: [PlayerGroup]
 
     @State private var selectedPlayerIDs: Set<UUID> = []
     @State private var buyInAmount: Double = 20
@@ -21,6 +22,16 @@ struct SessionSetupView: View {
                             .foregroundStyle(.secondary)
                         TextField("Amount", value: $buyInAmount, format: .number)
                             .keyboardType(.decimalPad)
+                    }
+                }
+
+                if !groups.isEmpty {
+                    Section("Groups") {
+                        ForEach(groups) { group in
+                            GroupSelectionRow(group: group) {
+                                addAllFromGroup(group)
+                            }
+                        }
                     }
                 }
 
@@ -72,6 +83,12 @@ struct SessionSetupView: View {
         }
     }
 
+    private func addAllFromGroup(_ group: PlayerGroup) {
+        for player in group.players {
+            selectedPlayerIDs.insert(player.id)
+        }
+    }
+
     private func startSession() {
         let session = GameSession(initialBuyIn: buyInAmount)
         context.insert(session)
@@ -84,7 +101,30 @@ struct SessionSetupView: View {
             context.insert(buyIn)
         }
 
-        dismiss()
+        navigateToSession = session
+    }
+}
+
+private struct GroupSelectionRow: View {
+    let group: PlayerGroup
+    let onAddAll: () -> Void
+
+    var body: some View {
+        HStack(spacing: 12) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(group.name)
+                    .font(.body)
+                Text("\(group.players.count) player\(group.players.count == 1 ? "" : "s")")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            Button("Add All", action: onAddAll)
+                .font(.caption.bold())
+                .buttonStyle(.bordered)
+                .tint(.blue)
+                .disabled(group.players.isEmpty)
+        }
     }
 }
 

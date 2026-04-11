@@ -29,6 +29,9 @@
 		EC4AC45C9EB862A36614EE1D /* ActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */; };
 		EED09C53379551625A604501 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9667751312666B96E362010 /* GameSession.swift */; };
 		F9D77C8E34602273A3BDDB7E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DEE0BCCDCD0696AB7C3843 /* Player.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlayerGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */; };
+		C1D2E3F4A5B6C7D8E9F0A1B2 /* GroupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */; };
+		E1F2A3B4C5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		E9667751312666B96E362010 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		F3BF048A98696C629BDFDED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionView.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGroup.swift; sourceTree = "<group>"; };
+		D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormView.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayersToSessionSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -90,6 +96,7 @@
 				8E760E868C6020A5F93E78C4 /* BuyIn.swift */,
 				E9667751312666B96E362010 /* GameSession.swift */,
 				35DEE0BCCDCD0696AB7C3843 /* Player.swift */,
+				B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */,
 				E50C499EE2AEA2EFE724E46B /* SessionPlayer.swift */,
 			);
 			path = Models;
@@ -100,6 +107,7 @@
 			children = (
 				7C2E26F61EE02801CBD3E8B2 /* PlayerDetailView.swift */,
 				D80454BAC16849DB9881803A /* PlayerFormView.swift */,
+				D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */,
 				97702DF0CEF7BF83FC1FCD61 /* PlayerListView.swift */,
 			);
 			path = Players;
@@ -135,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */,
+				F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */,
 				AA91A85A675F107C030348B3 /* CashOutSheet.swift */,
 				BE287863F019DC4BFFE7FF7B /* EndSessionView.swift */,
 				0239C069D4592B650199089D /* HomeView.swift */,
@@ -236,7 +245,10 @@
 				EED09C53379551625A604501 /* GameSession.swift in Sources */,
 				4A92685CB5FB07BFF04FA04B /* HomeView.swift in Sources */,
 				F9D77C8E34602273A3BDDB7E /* Player.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* PlayerGroup.swift in Sources */,
 				CED8F260BD3F480F9D8D4160 /* PlayerChip.swift in Sources */,
+				C1D2E3F4A5B6C7D8E9F0A1B2 /* GroupFormView.swift in Sources */,
+				E1F2A3B4C5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift in Sources */,
 				5AF57DD3DEE23509D963E949 /* PlayerDetailView.swift in Sources */,
 				0C8AC576557C78A5FA48434B /* PlayerFormView.swift in Sources */,
 				C76F4C83F4B2CB011B229929 /* PlayerListView.swift in Sources */,
