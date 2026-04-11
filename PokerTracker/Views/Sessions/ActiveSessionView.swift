@@ -7,10 +7,32 @@ struct ActiveSessionView: View {
 
     let session: GameSession
 
+    @Query private var participants: [SessionPlayer]
+
     @State private var playerForReBuy: SessionPlayer?
     @State private var playerForCashOut: SessionPlayer?
     @State private var showingEndSession = false
     @State private var showingAddPlayers = false
+
+    init(session: GameSession) {
+        self.session = session
+        let id = session.id
+        _participants = Query(filter: #Predicate<SessionPlayer> { sp in
+            sp.session?.id == id
+        })
+    }
+
+    private var active: [SessionPlayer] {
+        participants.filter { $0.isActive }.sorted { $0.displayName < $1.displayName }
+    }
+
+    private var cashedOut: [SessionPlayer] {
+        participants.filter { !$0.isActive }.sorted { $0.displayName < $1.displayName }
+    }
+
+    private var totalPot: Double {
+        participants.reduce(0) { $0 + $1.totalBuyIn }
+    }
 
     var body: some View {
         NavigationStack {
@@ -22,7 +44,7 @@ struct ActiveSessionView: View {
                             Text("Total Pot")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                            Text(session.totalPot.formatted(.currency(code: "GBP")))
+                            Text(totalPot.formatted(.currency(code: "GBP")))
                                 .font(.system(size: 32, weight: .bold, design: .rounded))
                                 .foregroundStyle(Theme.gold)
                         }
@@ -31,7 +53,7 @@ struct ActiveSessionView: View {
                             Text("Active")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                            Text("\(session.activePlayers.count)")
+                            Text("\(active.count)")
                                 .font(.system(size: 32, weight: .bold, design: .rounded))
                         }
                     }
@@ -39,10 +61,6 @@ struct ActiveSessionView: View {
                 }
 
                 Section("At the Table") {
-                    let active = session.participants
-                        .filter { $0.isActive }
-                        .sorted { $0.displayName < $1.displayName }
-
                     if active.isEmpty {
                         Text("All players have cashed out")
                             .foregroundStyle(.secondary)
@@ -57,10 +75,9 @@ struct ActiveSessionView: View {
                     }
                 }
 
-                let cashedOut = session.participants.filter { !$0.isActive }
                 if !cashedOut.isEmpty {
                     Section("Cashed Out") {
-                        ForEach(cashedOut.sorted { $0.displayName < $1.displayName }) { sp in
+                        ForEach(cashedOut) { sp in
                             CashedOutRow(sessionPlayer: sp)
                         }
                     }
