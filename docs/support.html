@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Fred's Poker Tracker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background-color: #ffffff;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 0 32px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 0 0 8px;
+        }
+        .header p {
+            color: #666;
+            font-size: 16px;
+            margin: 0;
+        }
+        h2 {
+            color: #b8860b;
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        h3 {
+            color: #1a1a2e;
+            font-size: 17px;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 16px;
+            color: #333;
+        }
+        ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+        .faq-item h3 {
+            margin: 0 0 8px;
+            color: #1a1a2e;
+        }
+        .faq-item p {
+            margin: 0;
+            color: #555;
+            font-size: 15px;
+        }
+        .contact-box {
+            background-color: #fefce8;
+            border: 1px solid #b8860b;
+            border-radius: 8px;
+            padding: 28px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .contact-box h2 {
+            margin-top: 0;
+            color: #b8860b;
+        }
+        .contact-box a {
+            display: inline-block;
+            background-color: #b8860b;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+        .contact-box a:hover {
+            background-color: #9a7009;
+        }
+        a {
+            color: #b8860b;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .privacy-link {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #666;
+        }
+        @media (max-width: 640px) {
+            body { padding: 16px; }
+            .header h1 { font-size: 28px; }
+            h2 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Fred's Poker Tracker</h1>
+        <p>Support &amp; Help</p>
+    </div>
+
+    <h2>Getting Started</h2>
+
+    <h3>Add your players</h3>
+    <p>Go to the <strong>Players</strong> tab and tap <strong>+</strong> to add each person you play with. Give them a name and pick a colour — that's all you need.</p>
+
+    <h3>Organise players into groups</h3>
+    <p>In the Players tab, tap <strong>Groups</strong> in the segment at the top, then tap <strong>+</strong> to create a group (e.g. "Wednesday Night"). Assign members to the group so you can add them all to a session in one tap.</p>
+
+    <h3>Start a session</h3>
+    <p>Tap <strong>+</strong> on the Sessions tab, set the buy-in amount, then select players or tap <strong>Add All</strong> next to a group. Tap <strong>Start</strong> to begin.</p>
+
+    <h3>During a session</h3>
+    <p>Each player card has a <strong>Re-buy</strong> button (add more chips) and a <strong>Cash Out</strong> button (record their final stack). If someone arrives late, tap the <strong>···</strong> menu in the top-right and choose <strong>Add Players</strong>.</p>
+
+    <h3>Ending a session</h3>
+    <p>Tap <strong>End Session</strong>, enter final chip counts for anyone still playing, and confirm. The app will calculate who owes what and show the minimum number of transfers needed to settle up.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h3>Can I add a player after the session has started?</h3>
+        <p>Yes. During an active session tap the <strong>···</strong> menu (top-right) and choose <strong>Add Players</strong>. Select the players you want to add and enter their buy-in amount.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How do I record a re-buy?</h3>
+        <p>Tap the <strong>Re-buy</strong> button on a player's card during an active session and enter the amount. Each re-buy is tracked individually and added to their total buy-in.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What if the chip counts don't add up?</h3>
+        <p>When ending a session, the app warns you if the total chips cashed out don't match the total pot. You can adjust values before confirming.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How does settlement work?</h3>
+        <p>The app uses a greedy algorithm to calculate the minimum number of transfers needed to settle all balances — so rather than everyone paying everyone, it finds the simplest path.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Is my data backed up?</h3>
+        <p>All data is stored locally on your device. If you have iCloud Backup enabled in your iOS settings, the app's data will be included in those backups. The app itself makes no network connections.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How do I delete a player?</h3>
+        <p>In the <strong>Players</strong> tab, swipe left on a player and tap <strong>Delete</strong>. Note: this also removes all their session history.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How do I delete a group?</h3>
+        <p>In the <strong>Players</strong> tab, switch to <strong>Groups</strong>, then swipe left on the group and tap <strong>Delete</strong>. This only deletes the group — the players themselves are not affected.</p>
+    </div>
+
+    <div class="contact-box">
+        <h2>Still need help?</h2>
+        <p>Send us an email and we'll get back to you within 5 business days.</p>
+        <a href="mailto:travelrate@proton.me">travelrate@proton.me</a>
+    </div>
+
+    <div class="privacy-link">
+        <a href="privacy_policy.html">Privacy Policy</a>
+    </div>
+
+</body>
+</html>
