@@ -18,6 +18,11 @@ struct SessionSetupView: View {
     @AppStorage("chips.red") private var redCount = 50
     @AppStorage("chips.black") private var blackCount = 50
     @AppStorage("chips.blue") private var blueCount = 50
+    // Chip value overrides in £; 0 = pick automatically
+    @State private var greenDenom = 0.0
+    @State private var redDenom = 0.0
+    @State private var blackDenom = 0.0
+    @State private var blueDenom = 0.0
 
     var body: some View {
         NavigationStack {
@@ -42,10 +47,10 @@ struct SessionSetupView: View {
                             .multilineTextAlignment(.trailing)
                             .frame(width: 70)
                     }
-                    chipCountRow("Green", $greenCount)
-                    chipCountRow("Red", $redCount)
-                    chipCountRow("Black", $blackCount)
-                    chipCountRow("Blue", $blueCount)
+                    chipRow("Green", $greenCount, $greenDenom)
+                    chipRow("Red", $redCount, $redDenom)
+                    chipRow("Black", $blackCount, $blackDenom)
+                    chipRow("Blue", $blueCount, $blueDenom)
                 } header: {
                     Text("Chips")
                 } footer: {
@@ -147,21 +152,31 @@ struct SessionSetupView: View {
             stackValue: buyInAmount,
             playerCount: selectedPlayerIDs.count,
             colors: [
-                ("Green", greenCount), ("Red", redCount),
-                ("Black", blackCount), ("Blue", blueCount)
+                ("Green", greenCount, greenDenom == 0 ? nil : greenDenom),
+                ("Red", redCount, redDenom == 0 ? nil : redDenom),
+                ("Black", blackCount, blackDenom == 0 ? nil : blackDenom),
+                ("Blue", blueCount, blueDenom == 0 ? nil : blueDenom)
             ]
         )
     }
 
-    private func chipCountRow(_ name: String, _ count: Binding<Int>) -> some View {
+    private func chipRow(_ name: String, _ count: Binding<Int>, _ denom: Binding<Double>) -> some View {
         HStack {
             chipCircle(chipColors[name] ?? .gray)
             Text(name)
             Spacer()
+            Picker("Value", selection: denom) {
+                Text("Auto").tag(0.0)
+                ForEach(ChipCalculator.denominations, id: \.self) { d in
+                    Text(formatDenom(d)).tag(d)
+                }
+            }
+            .pickerStyle(.menu)
+            .labelsHidden()
             TextField("50", value: count, format: .number)
                 .keyboardType(.numberPad)
                 .multilineTextAlignment(.trailing)
-                .frame(width: 70)
+                .frame(width: 55)
         }
     }
 
