@@ -33,7 +33,7 @@ struct SessionSetupView: View {
 
                 Section {
                     HStack {
-                        Text("Min reserve for re-buys")
+                        Text("Reserve for re-buys")
                         Spacer()
                         Text("£")
                             .foregroundStyle(.secondary)
@@ -49,7 +49,7 @@ struct SessionSetupView: View {
                 } header: {
                     Text("Chips")
                 } footer: {
-                    Text("At least this much of each buy-in stays in the bank; anything that can't be dealt evenly stays there too.")
+                    Text("Each buy-in is dealt as chips. The reserve is extra cash set aside on top for future buy-ins.")
                 }
 
                 Section {
@@ -67,9 +67,7 @@ struct SessionSetupView: View {
                             }
                         }
                     } else {
-                        Text(bankReserve >= buyInAmount
-                             ? "The reserve is the whole buy-in — lower it to leave something to deal as chips."
-                             : "No split possible — lower the reserve or add chips.")
+                        Text("No split possible — add more chips for this many players.")
                             .foregroundStyle(.secondary)
                     }
                 } header: {
@@ -77,9 +75,8 @@ struct SessionSetupView: View {
                 } footer: {
                     if let split = chipSplit {
                         let dealt = split.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
-                        let bank = buyInAmount - dealt
-                        let players = selectedPlayerIDs.count
-                        Text("Chips dealt: £\(dealt.formatted()) each. Bank: £\(bank.formatted()) each (£\((bank * Double(players)).formatted()) total).")
+                        let pot = buyInAmount * Double(selectedPlayerIDs.count) + bankReserve
+                        Text("Chips dealt: £\(dealt.formatted()) each. Total pot: £\(pot.formatted()) (buy-ins + £\(bankReserve.formatted()) reserve).")
                     }
                 }
 
@@ -147,8 +144,7 @@ struct SessionSetupView: View {
 
     private var chipSplit: [ChipDenomination]? {
         ChipCalculator.calculate(
-            buyIn: buyInAmount,
-            minReserve: bankReserve,
+            stackValue: buyInAmount,
             playerCount: selectedPlayerIDs.count,
             colors: [
                 ("Green", greenCount), ("Red", redCount),

@@ -12,13 +12,11 @@ enum ChipCalculator {
     /// Standard denominations in pence.
     private static let ladder = [5, 10, 25, 50, 100, 200, 500, 1000, 2000, 2500, 5000]
 
-    /// Splits the largest stack worth at most (buy-in − minReserve) across the
-    /// available chip colors; whatever can't be dealt evenly stays in the bank
-    /// on top of the minimum reserve. Sum the result to get the actual stack.
-    static func calculate(buyIn: Double, minReserve: Double, playerCount: Int, colors: [(name: String, count: Int)]) -> [ChipDenomination]? {
-        // Round each side to pence first — subtracting Doubles can land a hair
-        // under the true value and lose a whole 5p step.
-        var target = Int((buyIn * 100).rounded()) - Int((minReserve * 100).rounded())
+    /// Splits the largest evenly-dealable stack at or below `stackValue`
+    /// across the available chip colors; whatever can't be dealt stays in
+    /// the bank. Sum the result to get the actual stack dealt.
+    static func calculate(stackValue: Double, playerCount: Int, colors: [(name: String, count: Int)]) -> [ChipDenomination]? {
+        var target = Int((stackValue * 100).rounded())
         target -= target % ladder[0] // only multiples of the smallest denom are dealable
         while target > 0 {
             if let split = splitPence(target, playerCount: playerCount, colors: colors) {
@@ -94,25 +92,22 @@ extension ChipCalculator {
     static func selfCheck() {
         let colors = [("Green", 50), ("Red", 50), ("Black", 50), ("Blue", 50)]
         // £10 stack, 4 players → exact split within 12 chips per color
-        let r = calculate(buyIn: 20, minReserve: 10, playerCount: 4, colors: colors)!
+        let r = calculate(stackValue: 10, playerCount: 4, colors: colors)!
         let total = r.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
         assert(abs(total - 10) < 0.001, "£10 splits exactly")
         assert(zip(r, r.dropFirst()).allSatisfy { $0.denomination < $1.denomination })
         assert(r.allSatisfy { $0.perPlayer <= 12 }, "respects availability")
-        // Full buy-in dealt when there's no reserve
-        let full = calculate(buyIn: 20, minReserve: 0, playerCount: 4, colors: colors)!
-        assert(abs(full.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) } - 20) < 0.001)
         // Scarce chips: one chip per player worth the whole stack still works
-        let scarce = calculate(buyIn: 20, minReserve: 0, playerCount: 4,
+        let scarce = calculate(stackValue: 20, playerCount: 4,
                                colors: colors.map { ($0.0, 4) })!
         let scarceTotal = scarce.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
         assert(abs(scarceTotal - 20) < 0.001, "big-chip-only split allowed")
-        // £10.03 target can't be made from 5p chips → deals £10, 3p extra to bank
-        let s = calculate(buyIn: 20, minReserve: 9.97, playerCount: 4, colors: colors)!
+        // £10.03 can't be made from 5p chips → deals £10, 3p stays in the bank
+        let s = calculate(stackValue: 10.03, playerCount: 4, colors: colors)!
         let dealt = s.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
         assert(abs(dealt - 10) < 0.001, "rounds stack down to nearest dealable amount")
         // Nothing dealable at all
-        assert(calculate(buyIn: 20, minReserve: 19.99, playerCount: 4, colors: colors) == nil)
+        assert(calculate(stackValue: 0.01, playerCount: 4, colors: colors) == nil)
     }
 }
 #endif
