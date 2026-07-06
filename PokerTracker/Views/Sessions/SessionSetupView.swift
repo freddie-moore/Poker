@@ -67,7 +67,9 @@ struct SessionSetupView: View {
                             }
                         }
                     } else {
-                        Text("No split possible — lower the reserve or add chips.")
+                        Text(bankReserve >= buyInAmount
+                             ? "The reserve is the whole buy-in — lower it to leave something to deal as chips."
+                             : "No split possible — lower the reserve or add chips.")
                             .foregroundStyle(.secondary)
                     }
                 } header: {
