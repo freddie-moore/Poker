@@ -33,7 +33,7 @@ struct SessionSetupView: View {
 
                 Section {
                     HStack {
-                        Text("Reserve for re-buys")
+                        Text("Min reserve for re-buys")
                         Spacer()
                         Text("£")
                             .foregroundStyle(.secondary)
@@ -49,10 +49,10 @@ struct SessionSetupView: View {
                 } header: {
                     Text("Chips")
                 } footer: {
-                    Text("Each player is dealt chips worth the buy-in minus the reserve.")
+                    Text("At least this much of each buy-in stays in the bank; anything that can't be dealt evenly stays there too.")
                 }
 
-                Section("Chip Split (per player)") {
+                Section {
                     if selectedPlayerIDs.isEmpty {
                         Text("Select players to see the split.")
                             .foregroundStyle(.secondary)
@@ -67,8 +67,17 @@ struct SessionSetupView: View {
                             }
                         }
                     } else {
-                        Text("No even split possible — adjust the reserve or chip counts.")
+                        Text("No split possible — lower the reserve or add chips.")
                             .foregroundStyle(.secondary)
+                    }
+                } header: {
+                    Text("Chip Split (per player)")
+                } footer: {
+                    if let split = chipSplit {
+                        let dealt = split.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
+                        let bank = buyInAmount - dealt
+                        let players = selectedPlayerIDs.count
+                        Text("Chips dealt: £\(dealt.formatted()) each. Bank: £\(bank.formatted()) each (£\((bank * Double(players)).formatted()) total).")
                     }
                 }
 
@@ -136,7 +145,8 @@ struct SessionSetupView: View {
 
     private var chipSplit: [ChipDenomination]? {
         ChipCalculator.calculate(
-            stackValue: buyInAmount - bankReserve,
+            buyIn: buyInAmount,
+            minReserve: bankReserve,
             playerCount: selectedPlayerIDs.count,
             colors: [
                 ("Green", greenCount), ("Red", redCount),

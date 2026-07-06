@@ -12,12 +12,24 @@ enum ChipCalculator {
     /// Standard denominations in pence.
     private static let ladder = [5, 10, 25, 50, 100, 200, 500, 1000, 2500, 5000]
 
-    /// Splits each player's stack (buy-in minus reserve) across the available
-    /// chip colors. Colors are assigned denominations smallest-first, in the
-    /// order given. Returns nil if no exact split exists.
-    static func calculate(stackValue: Double, playerCount: Int, colors: [(name: String, count: Int)]) -> [ChipDenomination]? {
-        guard stackValue > 0, playerCount > 0 else { return nil }
-        let target = Int((stackValue * 100).rounded())
+    /// Splits the largest stack worth at most (buy-in − minReserve) across the
+    /// available chip colors; whatever can't be dealt evenly stays in the bank
+    /// on top of the minimum reserve. Sum the result to get the actual stack.
+    static func calculate(buyIn: Double, minReserve: Double, playerCount: Int, colors: [(name: String, count: Int)]) -> [ChipDenomination]? {
+        var target = Int(((buyIn - minReserve) * 100).rounded(.down))
+        target -= target % ladder[0] // only multiples of the smallest denom are dealable
+        while target > 0 {
+            if let split = splitPence(target, playerCount: playerCount, colors: colors) {
+                return split
+            }
+            target -= ladder[0]
+        }
+        return nil
+    }
+
+    /// Exact split of `target` pence per player, or nil if impossible.
+    private static func splitPence(_ target: Int, playerCount: Int, colors: [(name: String, count: Int)]) -> [ChipDenomination]? {
+        guard target > 0, playerCount > 0 else { return nil }
         // Only colors with at least one chip per player are usable.
         let usable = colors.filter { $0.count / playerCount >= 1 }
         let n = usable.count
@@ -75,14 +87,18 @@ extension ChipCalculator {
     static func selfCheck() {
         let colors = [("Green", 50), ("Red", 50), ("Black", 50), ("Blue", 50)]
         // £10 stack, 4 players → exact split within 12 chips per color
-        let r = calculate(stackValue: 10, playerCount: 4, colors: colors)!
+        let r = calculate(buyIn: 20, minReserve: 10, playerCount: 4, colors: colors)!
         let total = r.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
-        assert(abs(total - 10) < 0.001, "split must equal stack value")
+        assert(abs(total - 10) < 0.001, "£10 splits exactly")
         assert(zip(r, r.dropFirst()).allSatisfy { $0.denomination < $1.denomination })
         assert(zip(r, r.dropFirst()).allSatisfy { $0.perPlayer >= $1.perPlayer }, "pyramid shape")
         assert(r.allSatisfy { $0.perPlayer <= 12 }, "respects availability")
-        // Impossible: £0.01 can't be made from 5p chips
-        assert(calculate(stackValue: 0.01, playerCount: 1, colors: colors) == nil)
+        // £10.03 target can't be made from 5p chips → deals £10, 3p extra to bank
+        let s = calculate(buyIn: 20, minReserve: 9.97, playerCount: 4, colors: colors)!
+        let dealt = s.reduce(0.0) { $0 + $1.denomination * Double($1.perPlayer) }
+        assert(abs(dealt - 10) < 0.001, "rounds stack down to nearest dealable amount")
+        // Nothing dealable at all
+        assert(calculate(buyIn: 20, minReserve: 19.99, playerCount: 4, colors: colors) == nil)
     }
 }
 #endif
