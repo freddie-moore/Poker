@@ -21,17 +21,18 @@
 		81390084C33E82949F0F05AA /* BuyIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E760E868C6020A5F93E78C4 /* BuyIn.swift */; };
 		950518F2D4229911E538624F /* CurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB5666E78FF38C1576DF51 /* CurrencyField.swift */; };
 		9B123FA00556FE2108809F49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C65A18293A00F4B35202F /* ContentView.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlayerGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */; };
 		B16A38DC6F0680DBA4EA42F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1343DB27D9F0CA7B40ABD277 /* Assets.xcassets */; };
 		BC741EFF5E7EC2CD864D4713 /* PokerTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166671E78707C3A41D8EFB3C /* PokerTrackerApp.swift */; };
+		C1D2E3F4A5B6C7D8E9F0A1B2 /* GroupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */; };
 		C76F4C83F4B2CB011B229929 /* PlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97702DF0CEF7BF83FC1FCD61 /* PlayerListView.swift */; };
 		CED8F260BD3F480F9D8D4160 /* PlayerChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EDA61B467BB66F0F93E4DB /* PlayerChip.swift */; };
 		DC90412D88E60B506A77FB2C /* SettlementCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */; };
+		DD1A2B3C4D5E6F7A8B9C0D1E /* ChipCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2B3C4D5E6F7A8B9C0D1E2F /* ChipCalculator.swift */; };
+		E1F2A3B4C5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */; };
 		EC4AC45C9EB862A36614EE1D /* ActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */; };
 		EED09C53379551625A604501 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9667751312666B96E362010 /* GameSession.swift */; };
 		F9D77C8E34602273A3BDDB7E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DEE0BCCDCD0696AB7C3843 /* Player.swift */; };
-		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlayerGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */; };
-		C1D2E3F4A5B6C7D8E9F0A1B2 /* GroupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */; };
-		E1F2A3B4C5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		4CA3B1EEC5AE82B93E9F80D7 /* ReBuySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReBuySheet.swift; sourceTree = "<group>"; };
 		62882503AC95783D5C34A949 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementCalculator.swift; sourceTree = "<group>"; };
+		EE2B3C4D5E6F7A8B9C0D1E2F /* ChipCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCalculator.swift; sourceTree = "<group>"; };
 		7386B7910DF80C73535AED47 /* BalanceSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSummaryView.swift; sourceTree = "<group>"; };
 		7C2E26F61EE02801CBD3E8B2 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		8CDFEA8A04B184BE74F7EBAD /* PokerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,18 +52,18 @@
 		9ADB5666E78FF38C1576DF51 /* CurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyField.swift; sourceTree = "<group>"; };
 		A942006FAB669326E21D9AB4 /* SettlementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettlementView.swift; sourceTree = "<group>"; };
 		AA91A85A675F107C030348B3 /* CashOutSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutSheet.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGroup.swift; sourceTree = "<group>"; };
 		B37C65A18293A00F4B35202F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BE287863F019DC4BFFE7FF7B /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
+		D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormView.swift; sourceTree = "<group>"; };
 		D80454BAC16849DB9881803A /* PlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFormView.swift; sourceTree = "<group>"; };
 		D8EDA61B467BB66F0F93E4DB /* PlayerChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChip.swift; sourceTree = "<group>"; };
 		E50C499EE2AEA2EFE724E46B /* SessionPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPlayer.swift; sourceTree = "<group>"; };
 		E5D48C55805D9130D2B13DD6 /* SessionSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupView.swift; sourceTree = "<group>"; };
 		E9667751312666B96E362010 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayersToSessionSheet.swift; sourceTree = "<group>"; };
 		F3BF048A98696C629BDFDED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F8F49B26A555132DA72F1C42 /* ActiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionView.swift; sourceTree = "<group>"; };
-		B1C2D3E4F5F6A7B8C9D0E1F2 /* PlayerGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerGroup.swift; sourceTree = "<group>"; };
-		D1E2F3A4B5B6C7D8E9F0A1B2 /* GroupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormView.swift; sourceTree = "<group>"; };
-		F1A2B3C4D5D6E7F8A9B0C1D2 /* AddPlayersToSessionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayersToSessionSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -124,6 +126,7 @@
 		76808040FBE35A7AE3273F58 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EE2B3C4D5E6F7A8B9C0D1E2F /* ChipCalculator.swift */,
 				6A5CE6E4F40B4F9CD23B00E6 /* SettlementCalculator.swift */,
 			);
 			path = Services;
@@ -257,6 +260,7 @@
 				5F05E2A7D0B5ACB6CC9FC46B /* SessionPlayer.swift in Sources */,
 				4B581B2288A4E49668F4C752 /* SessionSetupView.swift in Sources */,
 				DC90412D88E60B506A77FB2C /* SettlementCalculator.swift in Sources */,
+				DD1A2B3C4D5E6F7A8B9C0D1E /* ChipCalculator.swift in Sources */,
 				2456094AED9F873D3E3D6A06 /* SettlementView.swift in Sources */,
 				23BD01EEC755BC22507B5EEF /* Theme.swift in Sources */,
 			);
@@ -391,7 +395,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8BPH386N73;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -401,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fred.poker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Poker Distribution";
@@ -418,7 +422,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8BPH386N73;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -428,7 +432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fred.poker;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Poker Distribution";

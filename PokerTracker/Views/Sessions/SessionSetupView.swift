@@ -13,6 +13,12 @@ struct SessionSetupView: View {
     @State private var showingNewPlayer = false
     @State private var navigateToSession: GameSession?
 
+    @State private var bankReserve: Double = 0
+    @AppStorage("chips.green") private var greenCount = 50
+    @AppStorage("chips.red") private var redCount = 50
+    @AppStorage("chips.black") private var blackCount = 50
+    @AppStorage("chips.blue") private var blueCount = 50
+
     var body: some View {
         NavigationStack {
             Form {
@@ -22,6 +28,47 @@ struct SessionSetupView: View {
                             .foregroundStyle(.secondary)
                         TextField("Amount", value: $buyInAmount, format: .number)
                             .keyboardType(.decimalPad)
+                    }
+                }
+
+                Section {
+                    HStack {
+                        Text("Reserve for re-buys")
+                        Spacer()
+                        Text("£")
+                            .foregroundStyle(.secondary)
+                        TextField("0", value: $bankReserve, format: .number)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .frame(width: 70)
+                    }
+                    chipCountRow("Green", $greenCount)
+                    chipCountRow("Red", $redCount)
+                    chipCountRow("Black", $blackCount)
+                    chipCountRow("Blue", $blueCount)
+                } header: {
+                    Text("Chips")
+                } footer: {
+                    Text("Each player is dealt chips worth the buy-in minus the reserve.")
+                }
+
+                Section("Chip Split (per player)") {
+                    if selectedPlayerIDs.isEmpty {
+                        Text("Select players to see the split.")
+                            .foregroundStyle(.secondary)
+                    } else if let split = chipSplit {
+                        ForEach(split) { chip in
+                            HStack {
+                                chipCircle(chipColors[chip.colorName] ?? .gray)
+                                Text("\(chip.colorName) — \(formatDenom(chip.denomination))")
+                                Spacer()
+                                Text("× \(chip.perPlayer)")
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    } else {
+                        Text("No even split possible — adjust the reserve or chip counts.")
+                            .foregroundStyle(.secondary)
                     }
                 }
 
@@ -81,6 +128,44 @@ struct SessionSetupView: View {
                     .navigationBarBackButtonHidden()
             }
         }
+    }
+
+    private let chipColors: [String: Color] = [
+        "Green": .green, "Red": .red, "Black": .black, "Blue": .blue
+    ]
+
+    private var chipSplit: [ChipDenomination]? {
+        ChipCalculator.calculate(
+            stackValue: buyInAmount - bankReserve,
+            playerCount: selectedPlayerIDs.count,
+            colors: [
+                ("Green", greenCount), ("Red", redCount),
+                ("Black", blackCount), ("Blue", blueCount)
+            ]
+        )
+    }
+
+    private func chipCountRow(_ name: String, _ count: Binding<Int>) -> some View {
+        HStack {
+            chipCircle(chipColors[name] ?? .gray)
+            Text(name)
+            Spacer()
+            TextField("50", value: count, format: .number)
+                .keyboardType(.numberPad)
+                .multilineTextAlignment(.trailing)
+                .frame(width: 70)
+        }
+    }
+
+    private func chipCircle(_ color: Color) -> some View {
+        Circle()
+            .fill(color)
+            .overlay(Circle().strokeBorder(.secondary.opacity(0.4), lineWidth: 1))
+            .frame(width: 20, height: 20)
+    }
+
+    private func formatDenom(_ value: Double) -> String {
+        value < 1 ? "\(Int((value * 100).rounded()))p" : "£\(value.formatted())"
     }
 
     private func addAllFromGroup(_ group: PlayerGroup) {
