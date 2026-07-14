@@ -139,13 +139,11 @@ private struct PlayerSessionCard: View {
                         Text("In: \(sessionPlayer.totalBuyIn.formatted(.currency(code: "GBP")))")
                             .font(.caption)
                             .foregroundStyle(.secondary)
-                        if sessionPlayer.buyIns.count > 1 {
-                            Text("·")
-                                .foregroundStyle(.secondary)
-                            Text("\(sessionPlayer.buyIns.count) buy-ins")
-                                .font(.caption)
-                                .foregroundStyle(Theme.gold.opacity(0.8))
-                        }
+                        Text("·")
+                            .foregroundStyle(.secondary)
+                        Text("\(sessionPlayer.buyIns.count) buy-in\(sessionPlayer.buyIns.count == 1 ? "" : "s")")
+                            .font(.caption)
+                            .foregroundStyle(Theme.gold.opacity(0.8))
                     }
                 }
                 Spacer()

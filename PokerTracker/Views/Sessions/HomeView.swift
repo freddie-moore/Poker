@@ -2,9 +2,11 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \GameSession.date, order: .reverse) private var sessions: [GameSession]
     @State private var showingSetup = false
     @State private var activeSession: GameSession?
+    @State private var sessionPendingDelete: GameSession?
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -32,6 +34,13 @@ struct HomeView: View {
                                     SessionRow(session: session)
                                         .contentShape(Rectangle())
                                         .onTapGesture { activeSession = session }
+                                        .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                sessionPendingDelete = session
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                        }
                                 }
                             }
                         }
@@ -40,6 +49,13 @@ struct HomeView: View {
                             Section("Completed") {
                                 ForEach(completed) { session in
                                     SessionRow(session: session)
+                                        .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                sessionPendingDelete = session
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                        }
                                 }
                             }
                         }
@@ -70,6 +86,21 @@ struct HomeView: View {
         }
         .sheet(item: $activeSession) { session in
             ActiveSessionView(session: session)
+        }
+        .alert(
+            "Delete Session?",
+            isPresented: Binding(
+                get: { sessionPendingDelete != nil },
+                set: { if !$0 { sessionPendingDelete = nil } }
+            ),
+            presenting: sessionPendingDelete
+        ) { session in
+            Button("Delete", role: .destructive) {
+                modelContext.delete(session)
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: { _ in
+            Text("This removes the session and its buy-ins for good. It won't be settled up or counted in stats.")
         }
     }
 }
